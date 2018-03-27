@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "../App.css";
 import Profiles from "../components/Profiles"
-import dinoLogo from "../assets/g-dino.png";
+// import dinoLogo from "../assets/g-dino.png";
 
 const Header = () => {
   return (
   <header>
-    <img src={dinoLogo} alt="Dinosaur Logo" />
+    <img src="./assets/g-dino.png" alt="Dinosaur Logo" />
   </header>
   )
 };
@@ -23,8 +23,9 @@ class App extends Component {
     dinosaurs: []
   }
   fetchDinos() {
-    fetch('./dinosaurs.json').then(res => res.json()).then(data => {
+    return fetch('./dinosaurs.json').then(res => res.json()).then(data => {
       this.setState({ dinosaurs: data });
+      return data;
     })
   }
   componentDidMount() {
@@ -35,7 +36,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <Profiles dinosaurs={this.state.dinosaurs} />
+          <Profiles dinos={this.state.dinosaurs} />
         </main>
         <Footer />
       </div>
