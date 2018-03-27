@@ -6,6 +6,9 @@ class Profiles extends React.Component {
       <section id="profiles-container">
         <h2>Profiles</h2>
         <ul id="profiles">
+          {this.props.dinosaurs.map((dino, i) => (
+            <li key={i}>{dino}</li>
+          ))}
         </ul>
       </section>
     )

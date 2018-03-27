@@ -22,19 +22,20 @@ class App extends Component {
   state = {
     dinosaurs: []
   }
-  componentDidMount() {
+  fetchDinos() {
     fetch('./dinosaurs.json').then(res => res.json()).then(data => {
-      this.setState({
-        dinosaurs: data
-      })
+      this.setState({ dinosaurs: data });
     })
+  }
+  componentDidMount() {
+    this.fetchDinos();
   }
   render() {
     return (
       <div className="App">
         <Header />
         <main>
-          <Profiles />
+          <Profiles dinosaurs={this.state.dinosaurs} />
         </main>
         <Footer />
       </div>
