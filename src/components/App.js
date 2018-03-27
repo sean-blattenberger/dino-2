@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import "../App.css";
+import Profiles from "../components/Profiles"
+import dinoLogo from "../assets/g-dino.png";
 
+const Header = () => {
+  return (
+  <header>
+    <img src={dinoLogo} alt="Dinosaur Logo" />
+  </header>
+  )
+};
 const Footer = () => {
   return (
     <footer>
@@ -10,26 +19,22 @@ const Footer = () => {
 };
 
 class App extends Component {
+  state = {
+    dinosaurs: []
+  }
+  componentDidMount() {
+    fetch('./dinosaurs.json').then(res => res.json()).then(data => {
+      this.setState({
+        dinosaurs: data
+      })
+    })
+  }
   render() {
     return (
       <div className="App">
+        <Header />
         <main>
-          <section>
-            <h2>Job Listings</h2>
-            <ul id="job-listings" />
-          </section>
-          <aside id="side-bar">
-            <h3>Add a Job</h3>
-            <form class="job-form">
-              <label for="title">Title</label>
-              <input type="text" name="title" />
-              <label for="pay">Compensation</label>
-              <input type="text" name="pay" />
-              <label for="description">Description</label>
-              <textarea name="description" rows="8" cols="40" />
-              <input type="submit" name="submit" value="Submit" />
-            </form>
-          </aside>
+          <Profiles />
         </main>
         <Footer />
       </div>
