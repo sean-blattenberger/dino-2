@@ -51,7 +51,7 @@
 
 #### Deployed Link
 
-https://build-uzyksgyqts.now.sh
+https://build-vvkxstpsjc.now.sh
 
 #### Framework of choice
 
